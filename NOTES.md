@@ -19,17 +19,21 @@ user types get-a-pokemon
 2. Squirtle - Water Pokémon
 3. Charmander - Fire Pokémon
 
-Which Pokémon would you like?
+choice 1: Which Pokémon would you like?
 
 [user chooses]
 
-Would you like Charmander, the Fire type Pokémon?
+confirm choice: Would you like Charmander?
 
 [y/n]
 
-Congratulations, you have chosen Charmander!
+y: Congratulations, you have chosen Charmander!
 Would you like to learn more about this Pokémon?
 
 [more info from Bulbapedia]
 [nature generator]
 [level generator]
+
+n: Which Pokémon would you like?
+
+[back to list of three Pokémon; don't do the random generator again]
