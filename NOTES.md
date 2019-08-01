@@ -37,3 +37,12 @@ Would you like to learn more about this Pokémon?
 n: Which Pokémon would you like?
 
 [back to list of three Pokémon; don't do the random generator again]
+
+
+What is a Pokémon?
+
+A Pokémon has a name
+A Pokémon has a type
+A Pokémon has a description
+A Pokémon has a (randomly generated) nature
+[bonus: A Pokémon has a (randomly generated) level]

@@ -19,6 +19,7 @@ class StarterGenerator::CLI
     puts "1. Tyranitar"
     puts "2. Litwick"
     puts "3. Sunkern"
+    @starters = StarterGenerator::Pokemon.generated
   end
 
   def choose
