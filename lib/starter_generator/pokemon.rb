@@ -14,9 +14,7 @@ class StarterGenerator::Pokemon
 
   def self.generated
     #should return three instances of Pokémon
-    # puts "1. Tyranitar"
-    # puts "2. Litwick"
-    # puts "3. Sunkern"
+    #scrape Bulbapedia and return Pokémon generated through that list
 
     pokemon_1 = self.new("Test")
     pokemon_1.name = "Tyranitar"

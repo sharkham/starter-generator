@@ -46,3 +46,12 @@ A Pokémon has a type
 A Pokémon has a description
 A Pokémon has a (randomly generated) nature
 [bonus: A Pokémon has a (randomly generated) level]
+
+Sorting out what goes where:
+
+- Scraper class scrapes Pokémon list
+- Pokémon class makes objects out of these Pokémon
+- Something has to randomly pick 3
+- These are displayed to user
+- User picks a Pokémon
+- Scraper class scrapes detail Pokémon pages
