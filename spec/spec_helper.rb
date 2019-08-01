@@ -1,5 +1,6 @@
 require "bundler/setup"
-require "starter_generator"
+# require "starter_generator"
+require_relative "../lib/environment"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

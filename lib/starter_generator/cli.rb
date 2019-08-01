@@ -16,9 +16,6 @@ class StarterGenerator::CLI
 
   def pokemon_options
     puts "I have three Pokémon here looking for homes:"
-    puts "1. Tyranitar"
-    puts "2. Litwick"
-    puts "3. Sunkern"
     @starters = StarterGenerator::Pokemon.generated
   end
 
