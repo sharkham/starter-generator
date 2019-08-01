@@ -3,21 +3,21 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "starter_generator/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "starter_generator"
+  spec.name          = "environment"
   spec.version       = StarterGenerator::VERSION
   spec.authors       = ["Sam Markham"]
   spec.email         = ["sam.e.markham@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "This gem will generate three starter Pokémon and allow the user to choose one."
+  spec.description   = "A starter Pokémon generator!"
+  spec.homepage      = "https://github.com/sharkham/starter-generator"
   spec.license       = "MIT"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  # spec.metadata["homepage_uri"] = spec.homepage
+  # spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+  # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
