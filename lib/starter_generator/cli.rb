@@ -16,7 +16,7 @@ class StarterGenerator::CLI
 
   def pokemon_options
     puts "I have three Pokémon here looking for homes:"
-    @starters = StarterGenerator::Pokemon.generated
+    @starters = Pokemon.generated
     @starters.each.with_index(1) do |pokemon, i|
       puts "#{i}. #{pokemon.name}"
     end

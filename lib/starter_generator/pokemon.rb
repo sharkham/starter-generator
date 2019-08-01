@@ -1,20 +1,35 @@
 
 
-class StarterGenerator::Pokemon
+class Pokemon
   attr_accessor :name, :type, :description, :nature, :level
   @@all = []
   def initialize(name)
     @name = name
-    @@all << self
   end
 
   def self.all
     @@all
   end
 
+  def self.destroy_all
+    Pokemon.all.clear
+  end
+
+  def save
+    Pokemon.all << self
+  end
+
+  def self.create(name)
+    pokemon = Pokemon.new(name)
+    pokemon.save
+    pokemon
+  end
+
   def self.generated
     #should return three instances of Pokémon
     #scrape Bulbapedia and return Pokémon generated through that list
+
+    #THESE NEED TO BE COMMENTED OUT TO PASS TEST BUT ON TO RUN BIN/RUN
 
     # pokemon_1 = self.new("Test")
     # pokemon_1.name = "Tyranitar"
