@@ -1,11 +1,11 @@
 require "spec_helper"
 
-describe "Pokemon" do
-  let(:pokemon) { Pokemon.new("Tyranitar") }
+describe "StarterGenerator::Pokemon" do
+  let(:pokemon) { StarterGenerator::Pokemon.new("Tyranitar") }
 
   describe "#initialize" do
     it "accepts a name for the new pokemon" do
-      new_pokemon = Pokemon.new("Litwick")
+      new_pokemon = StarterGenerator::Pokemon.new("Litwick")
 
       new_pokemon_name = new_pokemon.instance_variable_get(:@name)
 
@@ -31,7 +31,7 @@ describe "Pokemon" do
 
   describe "@@all" do
     it "is initialized as an empty array" do
-      all = Pokemon.class_variable_get(:@@all)
+      all = StarterGenerator::Pokemon.class_variable_get(:@@all)
 
       expect(all).to match_array([])
     end
@@ -39,21 +39,21 @@ describe "Pokemon" do
 
   describe ".all" do
     it "returns the class variable @@all" do
-      expect(Pokemon.all).to match_array([])
+      expect(StarterGenerator::Pokemon.all).to match_array([])
 
-      Pokemon.class_variable_set(:@@all, [pokemon])
+      StarterGenerator::Pokemon.class_variable_set(:@@all, [pokemon])
 
-      expect(Pokemon.all).to match_array([pokemon])
+      expect(StarterGenerator::Pokemon.all).to match_array([pokemon])
     end
   end
 
   describe ".destroy_all" do
     it "resets the @@all class variable to an empty array" do
-      Pokemon.class_variable_set(:@@all, [pokemon])
+      StarterGenerator::Pokemon.class_variable_set(:@@all, [pokemon])
 
-      Pokemon.destroy_all
+      StarterGenerator::Pokemon.destroy_all
 
-      expect(Pokemon.all).to match_array([])
+      expect(StarterGenerator::Pokemon.all).to match_array([])
     end
   end
 
@@ -61,15 +61,15 @@ describe "Pokemon" do
     it "adds the Pokemon instance to the @@all class variable" do
       pokemon.save
 
-      expect(Pokemon.all).to include(pokemon)
+      expect(StarterGenerator::Pokemon.all).to include(pokemon)
     end
   end
 
   describe ".create" do
     it "initializes, saves, and returns the pokemon" do
-      created_pokemon = Pokemon.create("Charmander")
+      created_pokemon = StarterGenerator::Pokemon.create("Charmander")
 
-      expect(Pokemon.all).to include(created_pokemon)
+      expect(StarterGenerator::Pokemon.all).to include(created_pokemon)
     end
   end
 
