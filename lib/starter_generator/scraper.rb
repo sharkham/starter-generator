@@ -5,7 +5,7 @@ require 'pry'
 class Scraper
   @@all_pokemon = []
 
-  def self.all
+  def self.all_pokemon
     @@all_pokemon
   end
 
@@ -23,7 +23,7 @@ class Scraper
     end
     @@all_pokemon.delete_if {|pokemon| pokemon == ""}
   end
-  binding.pry
+
 
   def self.scrape_pokemon_page(pokemon_name)
     #scrape the individual pokémon's page

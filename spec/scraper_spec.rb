@@ -1,4 +1,4 @@
-#Scraper.all
+#Scraper.all_pokemon
   #returns an empty array
   #returns an array with elements in it after .scrape_list_page is run
   #the array doesn't contain any empty strings

@@ -1,10 +1,11 @@
 
 
 class Pokemon
-  attr_accessor :name, :type, :description, :nature, :level
+  attr_accessor :name, :number, :type, :description, :nature, :level
   @@all = []
-  def initialize(name)
+  def initialize(name, number)
     @name = name
+    @number = number
   end
 
   def self.all
@@ -19,8 +20,8 @@ class Pokemon
     Pokemon.all << self
   end
 
-  def self.create(name)
-    pokemon = Pokemon.new(name)
+  def self.create(name, number)
+    pokemon = Pokemon.new(name, number)
     pokemon.save
     pokemon
   end

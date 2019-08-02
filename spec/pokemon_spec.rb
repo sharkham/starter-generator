@@ -1,15 +1,22 @@
 require "spec_helper"
 
 describe "Pokemon" do
-  let(:pokemon) { Pokemon.new("Tyranitar") }
+  let(:pokemon) { Pokemon.new("Tyranitar", 248) }
 
   describe "#initialize" do
     it "accepts a name for the new pokemon" do
-      new_pokemon = Pokemon.new("Litwick")
+      new_pokemon = Pokemon.new("Litwick", 607)
 
       new_pokemon_name = new_pokemon.instance_variable_get(:@name)
 
       expect(new_pokemon_name).to eq("Litwick")
+    end
+    it "accepts a number for the new pokemon" do
+      new_pokemon_2 = Pokemon.new("Bulbasaur", 1)
+
+      new_pokemon_number = new_pokemon_2.instance_variable_get(:@number)
+
+      expect(new_pokemon_number).to eq(1)
     end
   end
 
@@ -67,7 +74,7 @@ describe "Pokemon" do
 
   describe ".create" do
     it "initializes, saves, and returns the pokemon" do
-      created_pokemon = Pokemon.create("Charmander")
+      created_pokemon = Pokemon.create("Charmander", 4)
 
       expect(Pokemon.all).to include(created_pokemon)
     end
