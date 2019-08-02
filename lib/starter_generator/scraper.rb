@@ -3,30 +3,30 @@ require 'open-uri'
 require 'pry'
 
 class Scraper
-  @@all_pokemon = []
+  @@all = []
 
-  def self.all_pokemon
-    @@all_pokemon
+  def self.all
+    @@all
   end
 
   def self.scrape_list_page
-    # scraped_pokemon = []
-
+    # scraped = []
     url = open("https://www.serebii.net/pokemon/all.shtml")
 
     index_page = Nokogiri::HTML(url)
 
-    # all_pokemon = index_page.css("table.dextable tr:nth-of-type(1n+3) td:nth-of-type(3) a").text
+    # all = index_page.css("table.dextable tr:nth-of-type(1n+3) td:nth-of-type(3) a").text
     pokemon_scrape = index_page.css("table.dextable tr td:nth-of-type(3)").each do |pokemon|
       name = pokemon.css("a").text
-      @@all_pokemon << name
+      @@all << name
     end
-    @@all_pokemon.delete_if {|pokemon| pokemon == ""}
+    @@all.delete_if {|pokemon| pokemon == ""}
   end
 
 
-  def self.scrape_pokemon_page(pokemon_name)
+  def self.scrape_pokemon_page(pokemon_number)
     #scrape the individual pokémon's page
+    url = open("")
   end
 end
 
