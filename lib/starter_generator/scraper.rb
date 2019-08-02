@@ -24,10 +24,45 @@ class Scraper
   end
 
 
-  def self.scrape_pokemon_page(pokemon_number)
-    #scrape the individual pokémon's page
-    url = open("")
+  def self.scrape_pokemon_page(number)
+    if number < 10
+      url_number = "00#{number.to_s}"
+    elsif number < 100
+      url_number = "0#{number.to_s}"
+    else
+      url_number = number.to_s
+    end
+    url = open("https://www.serebii.net/pokedex-sm/#{url_number}.shtml")
+    index_page = Nokogiri::HTML(url)
+    array = []
+    description_scrape = index_page.css("table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(2) div:nth-of-type(2) div td.foopika").each do |text|
+      words = text.css("~ td.fooinfo").text
+      array << words
+    end
+    description = array[1]
+    # array_test = []
+    # working.css("div:nth-of-type(2) div td.foopika").each do |pika|
+    #   text = pika.css("~ td.fooinfo").text
+    #   array_test << text
+    # end
+    binding.pry
+    #working.css("div:nth-of-type(2) div td.foopika ~ td.fooinfo").text
+    #working.css("div:nth-of-type(2) div div table.dextable:nth-of-type(7) td.fooinfo").text
+
   end
+
+  #do it as a helper method instead?
+  # def self.pokemon_number_formatter(pokemon_number)
+  #   #turn Pokémon number to string, and if there aren't enough zeros, add them
+  #   if pokemon_number < 10
+  #     number = "00#{pokemon_number.to_s}"
+  #   elsif pokemon_number < 100
+  #     number = "0#{pokemon_number.to_s}"
+  #   else
+  #     number = pokemon_number.to_s
+  #   end
+  # end
+
 end
 
 #BULBAPEDIA
