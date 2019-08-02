@@ -21,6 +21,8 @@ class Scraper
       @@all << name
     end
     @@all.delete_if {|pokemon| pokemon == ""}
+    @@all.delete_if.with_index { |pokemon, i| i > 720 }
+    # @@all.delete_if {|pokemon| pokemon.index > 721}
   end
 
 
@@ -29,25 +31,27 @@ class Scraper
       url_number = "00#{number.to_s}"
     elsif number < 100
       url_number = "0#{number.to_s}"
-    else
+    elsif number > 100
       url_number = number.to_s
+    else
+      puts "error"
     end
-    url = open("https://www.serebii.net/pokedex-sm/#{url_number}.shtml")
+    url = open("https://www.serebii.net/pokedex-xy/#{url_number}.shtml")
     index_page = Nokogiri::HTML(url)
+    first_level = index_page.css("table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(2) div:nth-of-type(2) div")
     array = []
-    description_scrape = index_page.css("table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(2) div:nth-of-type(2) div td.foopika").each do |text|
+    description_scrape = first_level.css("td.ruby").each do |text|
       words = text.css("~ td.fooinfo").text
       array << words
     end
     description = array[1]
-    # array_test = []
-    # working.css("div:nth-of-type(2) div td.foopika").each do |pika|
-    #   text = pika.css("~ td.fooinfo").text
-    #   array_test << text
-    # end
     binding.pry
-    #working.css("div:nth-of-type(2) div td.foopika ~ td.fooinfo").text
-    #working.css("div:nth-of-type(2) div div table.dextable:nth-of-type(7) td.fooinfo").text
+
+    # type_scrape = index_page.css("")
+
+    #stick a hash in here at some point, and possible build these specific scrapes out as helper methods
+    # binding.pry
+
 
   end
 
@@ -81,3 +85,13 @@ end
 
 #index_page.css("table.dextable tr td:nth-of-type(3)").text
 #gets: "\r\n\t\tName\t\r\n\t\tDef\r\n\t\tBulbasaur\r\n\t\t\r\n\t\tIvysaur\r\n\t\t\r\n\t\tVenusaur\r\n\t\t\r\n\t\tCharmander\r\n\t\t\r\n\t\tCharmeleon\r\n\t\t\r\n\t\tCharizard\r\n\t\t\r\n\t\tSquirtle"
+
+#using Sun and Moon/Let's Go dex (BROKE because Serebii doesn't have descriptions for anything not in Let's Go):
+# url = open("https://www.serebii.net/pokedex-sm/#{url_number}.shtml")
+# index_page = Nokogiri::HTML(url)
+# first_level = index_page.css("table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(2) div:nth-of-type(2) div")
+# array = []
+# description_scrape = first_level.css("td.foopika").each do |text|
+#   words = text.css("~ td.fooinfo").text
+#   array << words
+# end
