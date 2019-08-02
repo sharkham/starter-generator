@@ -3,20 +3,19 @@ require 'open-uri'
 require 'pry'
 
 class Scraper
-  @@all_pokemon
+  @@all_pokemon = []
 
   def self.all
     @@all_pokemon
   end
 
   def self.scrape_list_page
-    scraped_pokemon = []
-    #this bit maybe shouldn't be hardcoded but not sure how else to do it since scraper is only good for this site
+    # scraped_pokemon = []
 
     url = open("https://www.serebii.net/pokemon/all.shtml")
 
     index_page = Nokogiri::HTML(url)
-    binding.pry
+
     # all_pokemon = index_page.css("table.dextable tr:nth-of-type(1n+3) td:nth-of-type(3) a").text
     pokemon_scrape = index_page.css("table.dextable tr td:nth-of-type(3)").each do |pokemon|
       name = pokemon.css("a").text
@@ -24,11 +23,14 @@ class Scraper
     end
     @@all_pokemon.delete_if {|pokemon| pokemon == ""}
   end
+  binding.pry
 
   def self.scrape_pokemon_page(pokemon_name)
     #scrape the individual pokémon's page
   end
 end
+
+#BULBAPEDIA
 
 #index_page.css("table tr td a").text - gets literally all the Pokémon and types, mostly all in one word.
 #could try to use regex to split it into an array and then exclude all words that are types? But then

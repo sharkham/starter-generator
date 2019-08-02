@@ -9,7 +9,7 @@ How to Build a CLI Gem
 7. discover objects
 8. program
 
-- A command line interface for generating starter Pokémon, using Bulbapedia for stats
+- A command line interface for generating starter Pokémon, using Serebii for stats
 
 user types get-a-pokemon
 
@@ -30,7 +30,7 @@ confirm choice: Would you like Charmander?
 y: Congratulations, you have chosen Charmander!
 Would you like to learn more about this Pokémon?
 
-[more info from Bulbapedia]
+[more info from Serebii]
 [nature generator]
 [level generator]
 
