@@ -47,7 +47,12 @@ class Scraper
     description = array[1]
     binding.pry
 
-    # type_scrape = index_page.css("")
+    # type_scrape = first_level.css("td.cen").each do |foo|
+    #   foo.css("a img").attribute("src").text
+    # end
+
+    #need to rejig this so it gets each "a img" after td.cen!! Right now it's only getting one type URL.
+    type_scrape = first_level.css("td.cen a img").attribute("src").text
 
     #stick a hash in here at some point, and possible build these specific scrapes out as helper methods
     # binding.pry

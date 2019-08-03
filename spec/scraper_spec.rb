@@ -7,3 +7,8 @@
   #returns an array of Pokémon
   #pushes Pokémon into @@all_pokemon
 
+#Scraper.scrape_pokemon_page
+  #returns a hash of elements for individual Pokémon
+  #hash keys are description and type
+
+
