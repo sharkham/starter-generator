@@ -9,6 +9,10 @@ class StarterGenerator::CLI
     goodbye
   end
 
+  #look up streams for delaying the thing running
+  #need a method of waiting for a stream to complete before running the whole thing
+  #see: promises in Javascript
+
   def opening_message
     puts "Welcome to the world of Pokémon!"
     puts "Adventure awaits!\n\n"

@@ -54,6 +54,9 @@ class Scraper
     #need to rejig this so it gets each "a img" after td.cen!! Right now it's only getting one type URL.
     type_scrape = first_level.css("td.cen a img").attribute("src").text
 
+    #"hello world"[3..-3]
+    #"lo wor"
+
     #stick a hash in here at some point, and possible build these specific scrapes out as helper methods
     # binding.pry
 
