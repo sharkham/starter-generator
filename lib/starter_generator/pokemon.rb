@@ -3,9 +3,14 @@
 class Pokemon
   attr_accessor :name, :number, :type, :description, :nature, :level
   @@all = []
-  def initialize(name, number)
+  def initialize(name, number, nature)
     @name = name
     @number = number
+    @nature = nature
+  end
+
+  def save
+    Pokemon.all << self
   end
 
   def self.all
@@ -16,12 +21,8 @@ class Pokemon
     Pokemon.all.clear
   end
 
-  def save
-    Pokemon.all << self
-  end
-
-  def self.create(name, number)
-    pokemon = Pokemon.new(name, number)
+  def self.create(name, number, nature)
+    pokemon = Pokemon.new(name, number, nature)
     pokemon.save
     pokemon
   end
@@ -33,11 +34,16 @@ class Pokemon
 
   #should this be in the Pokémon class? Should Pokémon be responsible for creating themselves? Yes probably.
   def self.make_pokemon
-    number = Generator.random_number
+    number = Generator.random_pokemon_number
     name = Scraper.all[number-1]
-    self.create(name, number)
+    nature = Generator.random_nature
+    self.create(name, number, nature)
     #use the number generated in the previous method to pick a Pokémon from that array
     #instantiate a new Pokémon object with the name and the number(+1)
+  end
+
+  def self.natures
+    @@natures = ["Hardy", "Lonely", "Brave", "Adamant", "Naughty", "Bold", "Docile", "Relaxed", "Impish", "Lax", "Timid", "Hasty", "Serious", "Jolly", "Naïve", "Modest", "Mild", "Quiet", "Bashful", "Rash", "Calm", "Gentle", "Sassy", "Careful", "Quirky"]
   end
 
   def self.generated
