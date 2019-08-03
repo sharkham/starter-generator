@@ -1,4 +1,4 @@
-module Generator
+class Generator
   #class to take in Pokémon array made by Scraper and pick three to instantiate into Pokémon objects
 
   def self.random_number

@@ -33,7 +33,7 @@ class Pokemon
 
   #should this be in the Pokémon class? Should Pokémon be responsible for creating themselves? Yes probably.
   def self.make_pokemon
-    number = self.random_number
+    number = Generator.random_number
     name = Scraper.all[number-1]
     self.create(name, number)
     #use the number generated in the previous method to pick a Pokémon from that array
