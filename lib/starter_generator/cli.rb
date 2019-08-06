@@ -17,6 +17,7 @@ class StarterGenerator::CLI
 
   def opening_message
     puts "Welcome to the Pokémon Protection Society's online portal!"
+    #have some more lines about the PPS here to read while the Pokémon generate.
     puts "Please wait while we check our records for available Pokémon.\n\n"
   end
 
@@ -37,7 +38,7 @@ class StarterGenerator::CLI
   def pokemon_options
     puts "I have three Pokémon here looking for homes:"
     @pokemon.each.with_index(1) do |pokemon, i|
-      puts "#{i}. #{pokemon.name}"
+      puts "  #{i}. #{pokemon.name}"
     end
     # @starters = Pokemon.generated
     # @starters.each.with_index(1) do |pokemon, i|
@@ -46,21 +47,43 @@ class StarterGenerator::CLI
   end
 
   def choose
-    puts "Please tell me the number of the Pokémon you would like more information about, or type list to see the Pokémon again, or type exit:"
+    @adopt = false
+    puts "Please tell me the number of the Pokémon you would like more information about, or type exit to leave:"
     input = nil
-    while input != "exit"
+    while input != "exit" && @adopt == false
       input = gets.strip.downcase
       if input.to_i > 0 && input.to_i < 4
         the_pokemon = @pokemon[input.to_i-1]
         more_info(the_pokemon)
         print_pokemon_info(the_pokemon)
+        adopt?(the_pokemon)
       elsif input == "list"
         pokemon_options
       elsif input == "exit"
       else
-        puts "What was that? Please type list, exit, or a Pokémon number."
+        puts "What was that? Please type list to see the list again, exit, or a Pokémon number."
       end
     end
+  end
+
+  def goodbye
+    puts "Thank you for visiting us today!"
+  end
+
+  #Helper methods:
+  def adopt?(pokemon)
+    puts "Would you like to adopt this Pokémon? (y/n)"
+    input = gets.strip.downcase
+    if input == "y"
+      puts "Congratulations! You are now the proud trainer of #{pokemon.name}."
+      puts "Please treat it well."
+      @adopt = true
+    elsif input == "n"
+      pokemon_options
+    else
+      puts "What was that? Please type y or n."
+    end
+    @adopt
   end
 
   def more_info(pokemon)
@@ -78,8 +101,6 @@ class StarterGenerator::CLI
     puts "  This Pokémon has a #{pokemon.nature} nature."
   end
 
-  def goodbye
-    puts "Thank you for visiting us today!"
-  end
+
 
 end
