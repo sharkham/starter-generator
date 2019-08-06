@@ -36,20 +36,14 @@ class Pokemon
   def self.make_pokemon
     number = Generator.random_pokemon_number
     name = Scraper.all[number-1]
-    nature = Generator.random_nature
+    nature = self.natures[Generator.random_nature_number]
     self.create(name, number, nature)
     #use the number generated in the previous method to pick a Pokémon from that array
-    #instantiate a new Pokémon object with the name and the number(+1)
+    #instantiate a new Pokémon object with the name and the number(+1) and randomly generated nature
   end
 
   def self.natures
     @@natures = ["Hardy", "Lonely", "Brave", "Adamant", "Naughty", "Bold", "Docile", "Relaxed", "Impish", "Lax", "Timid", "Hasty", "Serious", "Jolly", "Naïve", "Modest", "Mild", "Quiet", "Bashful", "Rash", "Calm", "Gentle", "Sassy", "Careful", "Quirky"]
-  end
-
-  def add_nature(xxx)
-    nature = self.natures[Generator.random_nature_number]
-
-    #do create nature and add nature separately?
   end
 
   def add_scraped_attributes(attributes_hash)
