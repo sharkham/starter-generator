@@ -55,3 +55,15 @@ Sorting out what goes where:
 - These are displayed to user
 - User picks a Pokémon
 - Scraper class scrapes detail Pokémon pages
+
+Current generator workflow:
+
+- Scraper.scrape_list_page
+#this needs to go first because it makes the array all the other methods use
+- random = Pokemon.make_pokemon
+#uses the array to generate a random Pokémon, including name, number and nature
+- attributes = Scraper.scrape_pokemon_page(number_of_random)
+#the number attribute from previously generated Pokémon is used to get the attributes
+- random.add_scraped_attributes(attributes)
+#return value of previous method is passed in as an argument here, and attributes are added to Pokémon object
+

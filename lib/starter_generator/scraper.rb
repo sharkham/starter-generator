@@ -53,7 +53,7 @@ class Scraper
       text_array << type
     end
     types_array = text_array.select {|text| text.include?("pokedex-xy")}
-    attribute_hash[:types_array] = types_array.collect {|type| type.slice(12..-7)}
+    attribute_hash[:type] = types_array.collect {|type| type.slice(12..-7)}
     attribute_hash
 
 
