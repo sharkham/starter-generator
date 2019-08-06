@@ -5,7 +5,6 @@ class StarterGenerator::CLI
   def call
     opening_message
     generate_list
-    # chill
     make_three_pokemon
     pokemon_options
     choose
@@ -23,7 +22,6 @@ class StarterGenerator::CLI
 
   def generate_list
     Scraper.scrape_list_page
-    #find some way to delay other things until this happens!
   end
 
   def make_three_pokemon
@@ -58,6 +56,7 @@ class StarterGenerator::CLI
         puts "#{the_pokemon.name}"
       elsif input == "list"
         pokemon_options
+      elsif input == "exit"
       else
         puts "What was that? Please type list, exit, or a Pokémon number."
         #this is an error--this comes up when you input "exit" and then it does "goodbye"
