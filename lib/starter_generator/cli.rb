@@ -8,7 +8,6 @@ class StarterGenerator::CLI
     make_three_pokemon
     pokemon_options
     choose
-    more_info
     goodbye
   end
 
@@ -55,16 +54,11 @@ class StarterGenerator::CLI
         the_pokemon = @pokemon[input.to_i-1]
         more_info(the_pokemon)
         print_pokemon_info(the_pokemon)
-        #this breaks my going back to list or exit! It says it's running more_info and needs an argument?
-
-        # puts "#{the_pokemon.name}"
       elsif input == "list"
         pokemon_options
       elsif input == "exit"
-        #this isn't working--something needs to happen here. Break? We don't wanna use that though.
       else
         puts "What was that? Please type list, exit, or a Pokémon number."
-        #this is an error--this comes up when you input "exit" and then it does "goodbye"
       end
     end
   end
