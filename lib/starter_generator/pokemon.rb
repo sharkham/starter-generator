@@ -46,6 +46,17 @@ class Pokemon
     @@natures = ["Hardy", "Lonely", "Brave", "Adamant", "Naughty", "Bold", "Docile", "Relaxed", "Impish", "Lax", "Timid", "Hasty", "Serious", "Jolly", "Naïve", "Modest", "Mild", "Quiet", "Bashful", "Rash", "Calm", "Gentle", "Sassy", "Careful", "Quirky"]
   end
 
+  def add_nature(xxx)
+    nature = self.natures[Generator.random_nature_number]
+
+    #do create nature and add nature separately?
+  end
+
+  def add_scraped_attributes(attributes_hash)
+    attributes_hash.each {|key, value| self.send(("#{key}="), value)}
+    self
+  end
+
   def self.generated
     #should return three instances of Pokémon
     #scrape Bulbapedia and return Pokémon generated through that list
