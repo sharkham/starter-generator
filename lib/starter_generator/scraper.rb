@@ -39,26 +39,26 @@ class Scraper
     url = open("https://www.serebii.net/pokedex-xy/#{url_number}.shtml")
     index_page = Nokogiri::HTML(url)
     first_level = index_page.css("table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(2) div:nth-of-type(2) div")
-    array = []
+    description_array = []
     description_scrape = first_level.css("td.ruby").each do |text|
       words = text.css("~ td.fooinfo").text
-      array << words
+      description_array << words
     end
-    description = array[1]
-    binding.pry
+    description = description_array[1]
 
-    # type_scrape = first_level.css("td.cen").each do |foo|
-    #   foo.css("a img").attribute("src").text
-    # end
+    text_array = []
+    type_scrape = first_level.css("td.cen a").each do |foo|
+      type = foo.attribute("href").text
+      text_array << type
+    end
+    types_array = text_array.select {|text| text.include?("pokedex-xy")}
+    better_types_array = types_array.collect {|type| type.slice(12..-7)}
 
-    #need to rejig this so it gets each "a img" after td.cen!! Right now it's only getting one type URL.
-    type_scrape = first_level.css("td.cen a img").attribute("src").text
+    type_test = type_scrape.slice(12..-7)
 
-    #"hello world"[3..-3]
-    #"lo wor"
 
     #stick a hash in here at some point, and possible build these specific scrapes out as helper methods
-    # binding.pry
+
 
 
   end
