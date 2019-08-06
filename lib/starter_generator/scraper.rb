@@ -22,38 +22,58 @@ class Scraper
     @@all.delete_if.with_index { |pokemon, i| i > 720 }
   end
 
-
-  def self.scrape_pokemon_page(number)
-    #this can be one helper method: number conversion
+  #Helper method to turn actual number into URL number
+  def self.number_conversion(number)
     if number < 10
       url_number = "00#{number.to_s}"
     elsif number < 100
       url_number = "0#{number.to_s}"
     elsif number > 100
       url_number = number.to_s
-    else
-      puts "error"
     end
+  end
+
+  def self.scrape_pokemon_page(number)
+    #Converting the number into URL number:
+    url_number = self.number_conversion(number)
+
     attribute_hash = {}
-    #this can be one helper method, getting the first level scrape I use for the other scrapes?
+
+    #First level scrape:
     url = open("https://www.serebii.net/pokedex-xy/#{url_number}.shtml")
     index_page = Nokogiri::HTML(url)
     first_level = index_page.css("table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(2) div:nth-of-type(2) div")
-    #helper method description scrape
+
+    #Description scrape:
     description_array = []
     description_scrape = first_level.css("td.ruby").each do |text|
       words = text.css("~ td.fooinfo").text
       description_array << words
     end
     attribute_hash[:description] = description_array[1]
-    #helper method type scrape
+
+    #Type scrape:
     text_array = []
     type_scrape = first_level.css("td.cen a").each do |foo|
       type = foo.attribute("href").text
       text_array << type
     end
-    types_array = text_array.select {|text| text.include?("pokedex-xy")}
-    attribute_hash[:type] = types_array.collect {|type| type.slice(12..-7)}
+
+    #Type formatting:
+    type_urls_array = text_array.select {|text| text.include?("pokedex-xy")}
+    types_array = type_urls_array.collect {|type| type.slice(12..-7).capitalize!}
+    if types_array.length == 2
+      types_string = "#{types_array[0]} / #{types_array[1]}"
+    else
+      types_string = "#{types_array[0]}"
+    end
+    # types_string = types_array.each {|type| type.capitalize!}
+    #iterate over each item, make uppercase.
+    #if types_array has more than one item, do "#{types_array[0] / #{types_array[1]}"
+
+    attribute_hash[:type] = types_string
+
+
     attribute_hash
 
 

@@ -4,6 +4,7 @@ class Generator
   def self.random_pokemon_number
     #generate a random number from 0-[Scraper.all_pokemon.length]
     rand(1..(Scraper.all.length))
+
   end
 
   def self.random_nature_number
