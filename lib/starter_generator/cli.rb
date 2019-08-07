@@ -17,12 +17,17 @@ class StarterGenerator::CLI
   #see: promises in Javascript
 
   def opening_message
+    puts "------------------------------"
+    puts "|          P. P. S.          |"
+    puts "------------------------------"
+    puts "\n"
     puts "Welcome to the Pokémon Protection Society's online portal!"
     puts "The PPS was founded to care for and find homes for unwanted or abandoned Pokémon."
     puts "[more info]"
     puts "\n"
     #have some more lines about the PPS here to read while the Pokémon generate.
     puts "Please wait while we check our records for available Pokémon.\n"
+    puts "------------------------------\n"
   end
 
   def generate_list
@@ -53,7 +58,7 @@ class StarterGenerator::CLI
 
   def choose
     @adopt = false
-    puts "Please tell me the number of the Pokémon you would like more information about, or type exit to leave:"
+    puts "\nPlease tell me the number of the Pokémon you would like more information about, or type exit to leave:"
     input = nil
     while input != "exit" && @adopt == false
       input = gets.strip.downcase
