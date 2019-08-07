@@ -1,7 +1,7 @@
 
 
 class Pokemon
-  attr_accessor :name, :number, :type, :description, :nature, :level
+  attr_accessor :name, :number, :type, :description, :nature
   @@all = []
   def initialize(name, number, nature)
     @name = name

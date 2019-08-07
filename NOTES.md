@@ -49,12 +49,13 @@ A Pokémon has a (randomly generated) nature
 
 Sorting out what goes where:
 
-- Scraper class scrapes Pokémon list
-- Pokémon class makes objects out of these Pokémon
+- X Scraper class scrapes Pokémon list
 - Something has to randomly pick 3
-- These are displayed to user
+- X Pokémon class instantiates 3 Pokémon objects
+- X These are displayed to user
 - User picks a Pokémon
-- Scraper class scrapes detail Pokémon pages
+- X Scraper class scrapes detail Pokémon pages
+- X Pokémon class adds details to Pokémon objects
 
 Current generator workflow:
 
@@ -67,3 +68,17 @@ Current generator workflow:
 - random.add_scraped_attributes(attributes)
 #return value of previous method is passed in as an argument here, and attributes are added to Pokémon object
 
+To do:
+
+For coloring the text:
+- look up chalkboard
+For wrapping text:
+https://medium.com/@eli.lauffenburger/wrap-word-a-simple-ruby-method-for-formatting-cli-output-in-terminal-b9887efffc7b
+For making it easier for other folks to run:
+compile it to an execuatable binary
+If you want one easy thing to call- you can create a .sh file with the command you want to emulate.
+So like.
+folder -> Pokemon.sh, bin/other_script_you_wanna_call.
+And inside Pokemon.sh you put the literal command you’d usually do
+Then I think you can just type Pokemon.sh in the folder your in and it’s done.
+you might need to do ‘echo’ and then the command. But not sure.
