@@ -104,8 +104,8 @@ class StarterGenerator::CLI
   def print_pokemon_info(pokemon)
     puts "\n"
     puts "Name: #{pokemon.name}\n\n"
-    puts "Number: #{pokemon.number}\n\n"
-    #make sure the number thing is formatted properly here so it reads right.
+    puts "Number: #{Scraper.number_conversion(pokemon.number)}\n\n"
+    #Given its use here; the number conversion maybe shouldn't be in the Scraper class. A module?
     puts "Type: #{pokemon.type}\n\n"
     #this needs to not be an array here
     puts "Description: #{pokemon.description}\n\n"
