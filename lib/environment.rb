@@ -4,6 +4,7 @@ require_relative "./starter_generator/pokemon"
 require_relative "./starter_generator/scraper"
 require_relative "./starter_generator/generator"
 require 'pry'
+require 'colorize'
 
 module StarterGenerator
   class Error < StandardError; end

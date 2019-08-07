@@ -1,4 +1,5 @@
 #Our CLI Controller
+require 'colorize'
 
 class StarterGenerator::CLI
 
@@ -17,8 +18,11 @@ class StarterGenerator::CLI
 
   def opening_message
     puts "Welcome to the Pokémon Protection Society's online portal!"
+    puts "The PPS was founded to care for and find homes for unwanted or abandoned Pokémon."
+    puts "[more info]"
+    puts "\n"
     #have some more lines about the PPS here to read while the Pokémon generate.
-    puts "Please wait while we check our records for available Pokémon.\n\n"
+    puts "Please wait while we check our records for available Pokémon.\n"
   end
 
   def generate_list
@@ -36,6 +40,7 @@ class StarterGenerator::CLI
   end
 
   def pokemon_options
+    puts "\n"
     puts "I have three Pokémon here looking for homes:"
     @pokemon.each.with_index(1) do |pokemon, i|
       puts "  #{i}. #{pokemon.name}"
@@ -75,8 +80,8 @@ class StarterGenerator::CLI
     puts "Would you like to adopt this Pokémon? (y/n)"
     input = gets.strip.downcase
     if input == "y"
-      puts "Congratulations! You are now the proud trainer of #{pokemon.name}."
-      puts "Please treat it well."
+      puts "\nCongratulations! You are now the proud trainer of #{pokemon.name}."
+      puts "Please treat it well.\n\n"
       @adopt = true
     elsif input == "n"
       pokemon_options
@@ -92,13 +97,14 @@ class StarterGenerator::CLI
   end
 
   def print_pokemon_info(pokemon)
-    puts "  Name: #{pokemon.name}"
-    puts "  Number: #{pokemon.number}"
+    puts "\n"
+    puts "Name: #{pokemon.name}\n\n"
+    puts "Number: #{pokemon.number}\n\n"
     #make sure the number thing is formatted properly here so it reads right.
-    puts "  Type: #{pokemon.type}"
+    puts "Type: #{pokemon.type}\n\n"
     #this needs to not be an array here
-    puts "  Description: #{pokemon.description}"
-    puts "  This Pokémon has a #{pokemon.nature} nature."
+    puts "Description: #{pokemon.description}\n\n"
+    puts "Nature: #{pokemon.nature}\n\n"
   end
 
 
