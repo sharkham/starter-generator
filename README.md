@@ -1,8 +1,8 @@
 # StarterGenerator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/starter_generator`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the wonderful world of Pokémon! This gem generates three starter Pokémon for you to choose from to begin your Pokémon journey, up to and including Generation VI. 'Starter' Pokémon here could be any Pokémon from these generations, including evolved forms or legendaries; you're accessing them through the Pokémon World's version of the human society, the Pokémon Protection Society.
 
-TODO: Delete this and the text above, and describe your gem
+As well as generating three random Pokémon for you to choose from, this gem also gives you information on the Pokémon's type, Pokédex entry (from Omega Ruby) and randomly generates a nature.
 
 ## Installation
 
