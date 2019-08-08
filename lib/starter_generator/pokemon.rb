@@ -1,5 +1,3 @@
-
-
 class Pokemon
   attr_accessor :name, :number, :type, :description, :nature
   @@all = []

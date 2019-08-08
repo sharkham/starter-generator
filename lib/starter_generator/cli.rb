@@ -4,9 +4,8 @@ class StarterGenerator::CLI
   # include Formattable
   def call
     opening_message
-    generate_list
     generate_starters
-    pokemon_options
+    display_pokemon_options
     choose
     goodbye
   end
@@ -24,15 +23,12 @@ class StarterGenerator::CLI
     puts "Please wait while we check our records for available " + "Pokémon".colorize(:light_blue) + ".\n"
   end
 
-  def generate_list
-    Scraper.scrape_list_page
-  end
-
   def generate_starters
+    Scraper.scrape_list_page
     Pokemon.make_three_pokemon
   end
 
-  def pokemon_options
+  def display_pokemon_options
     puts "\n"
     puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
     puts "\n"
@@ -56,7 +52,7 @@ class StarterGenerator::CLI
         print_pokemon_info(the_pokemon)
         adopt?(the_pokemon)
       elsif input == "list"
-        pokemon_options
+        display_pokemon_options
       elsif input == "exit"
       else
         puts "What was that? Please type " + "list".colorize(:green) + " to see the list again, " + "exit".colorize(:green) + ", or a Pokémon number."
@@ -82,7 +78,7 @@ class StarterGenerator::CLI
       puts "Please treat it well.\n\n"
       @adopt = true
     elsif input == "n"
-      pokemon_options
+      display_pokemon_options
     else
       puts "What was that? Please type" + " y".colorize(:green) + " or " + "n".colorize(:green) + "."
     end
