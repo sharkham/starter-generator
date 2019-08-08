@@ -36,6 +36,12 @@ class Pokemon
     #instantiate a new Pokémon object with the name and the number(+1) and randomly generated nature
   end
 
+  def self.make_three_pokemon
+    3.times do
+      self.make_pokemon
+    end
+  end
+
   def self.natures
     @@natures = ["Hardy", "Lonely", "Brave", "Adamant", "Naughty", "Bold", "Docile", "Relaxed", "Impish", "Lax", "Timid", "Hasty", "Serious", "Jolly", "Naïve", "Modest", "Mild", "Quiet", "Bashful", "Rash", "Calm", "Gentle", "Sassy", "Careful", "Quirky"]
   end

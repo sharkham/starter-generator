@@ -5,7 +5,7 @@ class StarterGenerator::CLI
   def call
     opening_message
     generate_list
-    make_three_pokemon
+    generate_starters
     pokemon_options
     choose
     goodbye
@@ -22,21 +22,14 @@ class StarterGenerator::CLI
     puts "The PPS was founded to care for and find homes for unwanted or abandoned " + "Pokémon".colorize(:light_blue) + "."
     puts "\n"
     puts "Please wait while we check our records for available " + "Pokémon".colorize(:light_blue) + ".\n"
-    # puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
   end
 
   def generate_list
     Scraper.scrape_list_page
   end
 
-  def make_three_pokemon
-    @pokemon = []
-    pokemon_1 = Pokemon.make_pokemon
-    pokemon_2 = Pokemon.make_pokemon
-    pokemon_3 = Pokemon.make_pokemon
-    @pokemon << pokemon_1
-    @pokemon << pokemon_2
-    @pokemon << pokemon_3
+  def generate_starters
+    Pokemon.make_three_pokemon
   end
 
   def pokemon_options
@@ -44,7 +37,7 @@ class StarterGenerator::CLI
     puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
     puts "\n"
     puts "I have three Pokémon here looking for homes:"
-    @pokemon.each.with_index(1) do |pokemon, i|
+    Pokemon.all.each.with_index(1) do |pokemon, i|
       puts "  #{i}. " + "#{pokemon.name}".colorize(:light_blue)
     end
     puts "\n"
@@ -58,7 +51,7 @@ class StarterGenerator::CLI
     while input != "exit" && @adopt == false
       input = gets.strip.downcase
       if input.to_i > 0 && input.to_i < 4
-        the_pokemon = @pokemon[input.to_i-1]
+        the_pokemon = Pokemon.all[input.to_i-1]
         more_info(the_pokemon)
         print_pokemon_info(the_pokemon)
         adopt?(the_pokemon)
@@ -89,8 +82,6 @@ class StarterGenerator::CLI
       puts "Please treat it well.\n\n"
       @adopt = true
     elsif input == "n"
-      # puts "\n"
-      # puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
       pokemon_options
     else
       puts "What was that? Please type" + " y".colorize(:green) + " or " + "n".colorize(:green) + "."
