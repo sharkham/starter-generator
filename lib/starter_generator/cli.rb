@@ -12,10 +12,6 @@ class StarterGenerator::CLI
     goodbye
   end
 
-  #look up streams for delaying the thing running
-  #need a method of waiting for a stream to complete before running the whole thing
-  #see: promises in Javascript
-
   def opening_message
     puts "------------------------------".colorize(:color => :red, :background => :red)
     puts "------------------------------".colorize(:color => :red, :background => :red)
@@ -25,13 +21,7 @@ class StarterGenerator::CLI
     puts "\n"
     puts "Welcome to the " + "Pokémon Protection Society".colorize(:color => :light_blue) + "'s online portal!\n\n"
     puts "The PPS was founded to care for and find homes for unwanted or abandoned " + "Pokémon".colorize(:light_blue) + "."
-    # puts "Most of the Pokémon here were surrendered by trainers, rescued from situations of abuse,"
-    # puts "or can no longer survive in the wild for other reasons."
-    # puts "We take in Pokémon surrendered by trainers, rescue Pokémon from situations of abuse,"
-    # puts "and bring in abandoned Pokémon who can no longer live in the wild."
     puts "\n"
-    #have some more lines about the PPS here to read while the Pokémon generate.
-    # puts "Congratulations on passing our adoption checks!"
     puts "Please wait while we check our records for available " + "Pokémon".colorize(:light_blue) + ".\n\n"
     puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
   end
@@ -58,10 +48,6 @@ class StarterGenerator::CLI
     end
     puts "\n"
     puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
-    # @starters = Pokemon.generated
-    # @starters.each.with_index(1) do |pokemon, i|
-    #   puts "#{i}. #{pokemon.name}"
-    # end
   end
 
   def choose
