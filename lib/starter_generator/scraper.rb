@@ -67,9 +67,6 @@ class Scraper
     else
       types_string = "#{types_array[0]}"
     end
-    # types_string = types_array.each {|type| type.capitalize!}
-    #iterate over each item, make uppercase.
-    #if types_array has more than one item, do "#{types_array[0] / #{types_array[1]}"
 
     attribute_hash[:type] = types_string
 
@@ -80,30 +77,3 @@ class Scraper
 
 
 end
-
-#BULBAPEDIA
-
-#index_page.css("table tr td a").text - gets literally all the Pokémon and types, mostly all in one word.
-#could try to use regex to split it into an array and then exclude all words that are types? But then
-#still get a bunch of garbage at the end
-
-#index_page.css("table tr:nth-child(2) td:nth-child(4) a").text = "BulbasaurChikoritaTreeckoTurtwigVictiniChespinRowletGrookey"
-#it's grabbing all of the Pokémon in tables in that position--so, all starters in each dex.
-
-#SEREBII
-
-#serebii test: serebii_test_2.css("table.dextable tr:nth-of-type(1n+3) td:nth-of-type(3) a").text
-#serebii test 2: serebii_test_2.css("table.dextable tr td:nth-of-type(3) a").text
-
-#index_page.css("table.dextable tr td:nth-of-type(3)").text
-#gets: "\r\n\t\tName\t\r\n\t\tDef\r\n\t\tBulbasaur\r\n\t\t\r\n\t\tIvysaur\r\n\t\t\r\n\t\tVenusaur\r\n\t\t\r\n\t\tCharmander\r\n\t\t\r\n\t\tCharmeleon\r\n\t\t\r\n\t\tCharizard\r\n\t\t\r\n\t\tSquirtle"
-
-#using Sun and Moon/Let's Go dex (BROKE because Serebii doesn't have descriptions for anything not in Let's Go):
-# url = open("https://www.serebii.net/pokedex-sm/#{url_number}.shtml")
-# index_page = Nokogiri::HTML(url)
-# first_level = index_page.css("table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(2) div:nth-of-type(2) div")
-# array = []
-# description_scrape = first_level.css("td.foopika").each do |text|
-#   words = text.css("~ td.fooinfo").text
-#   array << words
-# end
