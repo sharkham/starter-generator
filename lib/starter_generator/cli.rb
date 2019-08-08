@@ -1,5 +1,4 @@
 #Our CLI Controller
-require 'colorize'
 
 class StarterGenerator::CLI
   # include Formattable
@@ -22,8 +21,8 @@ class StarterGenerator::CLI
     puts "Welcome to the " + "Pokémon Protection Society".colorize(:color => :light_blue) + "'s online portal!\n\n"
     puts "The PPS was founded to care for and find homes for unwanted or abandoned " + "Pokémon".colorize(:light_blue) + "."
     puts "\n"
-    puts "Please wait while we check our records for available " + "Pokémon".colorize(:light_blue) + ".\n\n"
-    puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
+    puts "Please wait while we check our records for available " + "Pokémon".colorize(:light_blue) + ".\n"
+    # puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
   end
 
   def generate_list
@@ -42,6 +41,8 @@ class StarterGenerator::CLI
 
   def pokemon_options
     puts "\n"
+    puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
+    puts "\n"
     puts "I have three Pokémon here looking for homes:"
     @pokemon.each.with_index(1) do |pokemon, i|
       puts "  #{i}. " + "#{pokemon.name}".colorize(:light_blue)
@@ -52,7 +53,7 @@ class StarterGenerator::CLI
 
   def choose
     @adopt = false
-    puts "\nPlease tell me the number of the Pokémon you would like more information about, or type " + "exit".colorize(:light_blue) + " to leave:"
+    puts "\nPlease tell me the number of the Pokémon you would like more information about, or type " + "exit".colorize(:green) + " to leave:"
     input = nil
     while input != "exit" && @adopt == false
       input = gets.strip.downcase
@@ -65,7 +66,7 @@ class StarterGenerator::CLI
         pokemon_options
       elsif input == "exit"
       else
-        puts "What was that? Please type " + "list".colorize(:light_blue) + " to see the list again, " + "exit".colorize(:light_blue) + ", or a Pokémon number."
+        puts "What was that? Please type " + "list".colorize(:green) + " to see the list again, " + "exit".colorize(:green) + ", or a Pokémon number."
       end
     end
   end
@@ -79,20 +80,20 @@ class StarterGenerator::CLI
   #Helper methods:
 
   def adopt?(pokemon)
-    puts "Would you like to adopt this Pokémon? " + "(y/n)".colorize(:light_blue)
+    puts "Would you like to adopt this Pokémon? " + "(y/n)".colorize(:green)
     input = gets.strip.downcase
     if input == "y"
       puts "\n"
-    puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
+      puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
       puts "\nCongratulations! You are now the proud trainer of" + " #{pokemon.name}".colorize(:light_blue) + "."
       puts "Please treat it well.\n\n"
       @adopt = true
     elsif input == "n"
-      puts "\n"
-    puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
+      # puts "\n"
+      # puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
       pokemon_options
     else
-      puts "What was that? Please type" + " y".colorize(:light_blue) + " or " + "n".colorize(:light_blue) + "."
+      puts "What was that? Please type" + " y".colorize(:green) + " or " + "n".colorize(:green) + "."
     end
     @adopt
   end
