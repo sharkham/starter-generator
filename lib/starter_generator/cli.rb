@@ -2,7 +2,7 @@
 require 'colorize'
 
 class StarterGenerator::CLI
-
+  # include Formattable
   def call
     opening_message
     generate_list
@@ -21,12 +21,15 @@ class StarterGenerator::CLI
     puts "|          P. P. S.          |"
     puts "------------------------------"
     puts "\n"
-    puts "Welcome to the Pokémon Protection Society's online portal!"
+    puts "Welcome to the Pokémon Protection Society's online portal!\n\n"
     puts "The PPS was founded to care for and find homes for unwanted or abandoned Pokémon."
-    puts "[more info]"
+    puts "Most of the Pokémon here were surrendered by trainers, rescued from situations of abuse,"
+    puts "or can no longer survive in the wild for other reasons."
+    # puts "We take in Pokémon surrendered by trainers, rescue Pokémon from situations of abuse,"
+    # puts "and bring in abandoned Pokémon who can no longer live in the wild."
     puts "\n"
     #have some more lines about the PPS here to read while the Pokémon generate.
-    puts "Please wait while we check our records for available Pokémon.\n"
+    puts "Please wait while we check our records for available Pokémon.\n\n"
     puts "------------------------------\n"
   end
 
@@ -81,6 +84,7 @@ class StarterGenerator::CLI
   end
 
   #Helper methods:
+
   def adopt?(pokemon)
     puts "Would you like to adopt this Pokémon? (y/n)"
     input = gets.strip.downcase

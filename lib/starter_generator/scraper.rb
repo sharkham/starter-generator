@@ -76,27 +76,8 @@ class Scraper
 
     attribute_hash
 
-
-
-    #stick a hash in here at some point, and possible build these specific scrapes out as helper methods?
-    #or at least do the number conversion as helper method.
-    #REFACTOR LATER, GET WORKING NOW.
-
-
-
   end
 
-  #do it as a helper method instead?
-  # def self.pokemon_number_formatter(pokemon_number)
-  #   #turn Pokémon number to string, and if there aren't enough zeros, add them
-  #   if pokemon_number < 10
-  #     number = "00#{pokemon_number.to_s}"
-  #   elsif pokemon_number < 100
-  #     number = "0#{pokemon_number.to_s}"
-  #   else
-  #     number = pokemon_number.to_s
-  #   end
-  # end
 
 end
 
