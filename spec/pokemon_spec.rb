@@ -64,16 +64,6 @@ end
     end
   end
 
-  describe ".destroy_all" do
-    it "resets the @@all class variable to an empty array" do
-      Pokemon.class_variable_set(:@@all, [pokemon])
-
-      Pokemon.destroy_all
-
-      expect(Pokemon.all).to match_array([])
-    end
-  end
-
   describe "#save" do
     it "adds the Pokemon instance to the @@all class variable" do
       pokemon.save

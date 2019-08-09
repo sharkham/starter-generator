@@ -6,6 +6,8 @@ require_relative "./starter_generator/generator"
 # require_relative "./starter_generator/formattable"
 require 'pry'
 require 'colorize'
+require 'nokogiri'
+require 'open-uri'
 
 module StarterGenerator
   class Error < StandardError; end

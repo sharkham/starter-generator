@@ -15,10 +15,6 @@ class Pokemon
     @@all
   end
 
-  def self.destroy_all
-    Pokemon.all.clear
-  end
-
   def self.create(name, number, nature)
     pokemon = Pokemon.new(name, number, nature)
     pokemon.save
