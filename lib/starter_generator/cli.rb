@@ -1,5 +1,3 @@
-#Our CLI Controller
-
 class StarterGenerator::CLI
 
   def call
@@ -70,17 +68,20 @@ class StarterGenerator::CLI
 
   def adopt?(pokemon)
     puts "Would you like to adopt this Pokémon? " + "(y/n)".colorize(:green)
-    input = gets.strip.downcase
-    if input == "y"
-      puts "\n"
-      puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
-      puts "\nCongratulations! You are now the proud trainer of" + " #{pokemon.name}".colorize(:light_blue) + "."
-      puts "Please treat it well.\n\n"
-      @adopt = true
-    elsif input == "n"
-      display_pokemon_options
-    else
-      puts "What was that? Please type" + " y".colorize(:green) + " or " + "n".colorize(:green) + "."
+    adopt_input = nil
+    while adopt_input != "y" && adopt_input != "n"
+      adopt_input = gets.strip.downcase
+      if adopt_input == "y"
+        puts "\n"
+        puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
+        puts "\nCongratulations! You are now the proud trainer of" + " #{pokemon.name}".colorize(:light_blue) + "."
+        puts "Please treat it well.\n\n"
+        @adopt = true
+      elsif adopt_input == "n"
+        display_pokemon_options
+      else
+        puts "What was that? Please type" + " y".colorize(:green) + " or " + "n".colorize(:green) + "."
+      end
     end
     @adopt
   end
@@ -94,9 +95,7 @@ class StarterGenerator::CLI
     puts "\n"
     puts "Name: ".colorize(:light_blue) + "#{pokemon.name}\n\n"
     puts "Number: ".colorize(:light_blue) + "#{Scraper.number_conversion(pokemon.number)}\n\n"
-    #Given its use here; the number conversion maybe shouldn't be in the Scraper class. A module?
     puts "Type: ".colorize(:light_blue) + "#{pokemon.type}\n\n"
-    #this needs to not be an array here
     puts "Description: ".colorize(:light_blue) + "#{pokemon.description}\n\n"
     puts "Nature: ".colorize(:light_blue) + "#{pokemon.nature}\n\n"
   end
