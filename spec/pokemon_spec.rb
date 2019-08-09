@@ -80,15 +80,4 @@ end
     end
   end
 
-  #This test is from student scraper: I want to add Pokémon attributes later.
-  # describe "#add_student_attributes" do
-  #   it "uses the Scraper class to get a hash of a given students attributes and uses that hash to set additional attributes for that student." do
-  #     student.add_student_attributes(student_hash)
-  #     expect(student.bio).to eq("I was in southern California for college (sun and In-n-Out!), rural Oregon for high school (lived in a town with 1500 people and 3000+ cows), and Tokyo for elementary/middle school.")
-  #     expect(student.blog).to eq("someone@blog.com")
-  #     expect(student.linkedin).to eq("someone@linkedin.com")
-  #     expect(student.profile_quote).to eq("\"Forget safety. Live where you fear to live. Destroy your reputation. Be notorious.\" - Rumi")
-  #     expect(student.twitter).to eq("someone@twitter.com")
-  #   end
-  # end
 end

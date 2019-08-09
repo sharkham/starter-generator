@@ -1,7 +1,7 @@
 #Our CLI Controller
 
 class StarterGenerator::CLI
-  # include Formattable
+
   def call
     opening_message
     generate_starters
