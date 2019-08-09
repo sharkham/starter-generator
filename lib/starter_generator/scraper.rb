@@ -1,10 +1,10 @@
 # This gem will return Pokémon up to Gen VI.
-# To only return Pokémon from an earlier generation, replace the number (720) on line 21 with:
+# To only return Pokémon up to an earlier generation, replace the number (720) on the line 26 with:
 #     Gen I: 150
-#     Gen II:
-#     Gen III:
-#     Gen IV:
-#     Gen V:
+#     Gen II: 250
+#     Gen III: 385
+#     Gen IV: 492
+#     Gen V: 648
 
 class Scraper
   @@all = []
@@ -17,7 +17,6 @@ class Scraper
     url = open("https://www.serebii.net/pokemon/all.shtml")
 
     index_page = Nokogiri::HTML(url)
-    #"url" could be the open(etc) within line 19
 
     pokemon_scrape = index_page.css("table.dextable tr td:nth-of-type(3)").each do |pokemon|
       name = pokemon.css("a").text
