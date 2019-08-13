@@ -22,8 +22,8 @@ class StarterGenerator::CLI
   end
 
   def generate_starters
-    Scraper.scrape_list_page
-    Pokemon.make_three_pokemon
+    pokemon_list = Scraper.scrape_list_page
+    Pokemon.make_three_pokemon(pokemon_list)
   end
 
   def display_pokemon_options
@@ -87,8 +87,10 @@ class StarterGenerator::CLI
   end
 
   def more_info(pokemon)
-    attributes = Scraper.scrape_pokemon_page(pokemon.number)
-    pokemon.add_scraped_attributes(attributes)
+    if pokemon.description == nil
+      attributes = Scraper.scrape_pokemon_page(pokemon.number)
+      pokemon.add_scraped_attributes(attributes)
+    end
   end
 
   def print_pokemon_info(pokemon)

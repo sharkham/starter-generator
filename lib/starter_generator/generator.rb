@@ -1,7 +1,7 @@
 class Generator
 
-  def self.random_pokemon_number
-    rand(1..(Scraper.all.length))
+  def self.random_pokemon_number(pokemon_list)
+    rand(1..(pokemon_list.length))
   end
 
   def self.random_nature_number

@@ -1,5 +1,5 @@
 # This gem will return Pokémon up to Gen VI.
-# To only return Pokémon up to an earlier generation, replace the number (720) on the line 26 with:
+# To only return Pokémon up to an earlier generation, replace the number (720) on the line 20 with:
 #     Gen I: 150
 #     Gen II: 250
 #     Gen III: 385
@@ -7,23 +7,17 @@
 #     Gen V: 648
 
 class Scraper
-  @@all = []
-
-  def self.all
-    @@all
-  end
 
   def self.scrape_list_page
     url = open("https://www.serebii.net/pokemon/all.shtml")
 
     index_page = Nokogiri::HTML(url)
 
-    pokemon_scrape = index_page.css("table.dextable tr td:nth-of-type(3)").each do |pokemon|
-      name = pokemon.css("a").text
-      @@all << name
+    pokemon_scrape = index_page.css("table.dextable tr td:nth-of-type(3)").collect do |pokemon|
+      pokemon.css("a").text
     end
-    @@all.delete_if {|pokemon| pokemon == ""}
-    @@all.delete_if.with_index { |pokemon, i| i > 720 }
+    pokemon_scrape.delete_if {|pokemon| pokemon == ""}
+    pokemon_scrape[0..720]
   end
 
   #Helper method to turn actual number into URL number
@@ -67,6 +61,7 @@ class Scraper
     type_urls_array = text_array.select {|text| text.include?("pokedex-xy")}
     types_array = type_urls_array.collect {|type| type.slice(12..-7).capitalize!}
     if types_array.length == 2
+      #add error handling here for if the things in types array are the same thing--one Pokémon has "Electric/Electric"
       types_string = "#{types_array[0]} / #{types_array[1]}"
     else
       types_string = "#{types_array[0]}"

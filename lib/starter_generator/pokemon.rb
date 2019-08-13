@@ -21,19 +21,19 @@ class Pokemon
     pokemon
   end
 
-  def self.make_pokemon
+  def self.make_pokemon(pokemon_list)
     #randomly generated number
-    number = Generator.random_pokemon_number
+    number = Generator.random_pokemon_number(pokemon_list)
     #uses the Pokémon's number generated above to grab the corresponding name from the array of scraped Pokémon
-    name = Scraper.all[number-1]
+    name = pokemon_list[number-1]
     #randomly generated nature
     nature = self.natures[Generator.random_nature_number]
     self.create(name, number, nature)
   end
 
-  def self.make_three_pokemon
+  def self.make_three_pokemon(pokemon_list)
     3.times do
-      self.make_pokemon
+      self.make_pokemon(pokemon_list)
     end
   end
 
