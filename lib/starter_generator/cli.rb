@@ -48,7 +48,7 @@ class StarterGenerator::CLI
         the_pokemon = StarterGenerator::Pokemon.all[input.to_i-1]
         more_info(the_pokemon)
         print_pokemon_info(the_pokemon)
-        adopt?(the_pokemon)
+        adopt(the_pokemon)
       elsif input == "list"
         display_pokemon_options
       elsif input == "exit"
@@ -66,7 +66,7 @@ class StarterGenerator::CLI
 
   #Helper methods:
 
-  def adopt?(pokemon)
+  def adopt(pokemon)
     puts "Would you like to adopt this Pokémon? " + "(y/n)".colorize(:green)
     adopt_input = nil
     while adopt_input != "y" && adopt_input != "n"
