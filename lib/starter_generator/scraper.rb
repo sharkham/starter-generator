@@ -1,10 +1,11 @@
 # This gem will return Pokémon up to Gen VI.
-# To only return Pokémon up to an earlier generation, replace the number (720) on the line 20 with:
+# To only return Pokémon up to an earlier generation, replace the number (720) on the line 21 with:
 #     Gen I: 150
 #     Gen II: 250
 #     Gen III: 385
 #     Gen IV: 492
 #     Gen V: 648
+#     Gen VI: 720
 
 class StarterGenerator::Scraper
 
@@ -17,7 +18,7 @@ class StarterGenerator::Scraper
       pokemon.css("a").text
     end
     pokemon_scrape.delete_if {|pokemon| pokemon == ""}
-    pokemon_scrape[0..720]
+    pokemon_scrape[0..798]
   end
 
   #Helper method to turn actual number into URL number
@@ -74,5 +75,85 @@ class StarterGenerator::Scraper
 
   end
 
+  def self.scrape_pokemon_page_gen_vii(number)
+    #Converting the number into URL number:
+    url_number = self.number_conversion(number)
+
+    attribute_hash = {}
+
+    #Description scrape
+    url = open("https://www.serebii.net/pokedex-sm/#{url_number}.shtml")
+    index_page = Nokogiri::HTML(url)
+    description_string = index_page.css("table.dextable:nth-of-type(8) tr:nth-of-type(2) td.fooinfo").text
+    attribute_hash[:description] = description_string
+
+    #Type scrape
+    text_array = []
+    type_scrape = index_page.css("table.dextable:nth-of-type(2) td.cen a").each do |foo|
+      type = foo.attribute("href").text
+      text_array << type
+    end
+
+    #Type formatting:
+    type_urls_array = text_array.select {|text| text.include?("pokedex-sm")}
+    types_array = type_urls_array.collect {|type| type.slice(12..-7).capitalize!}
+    if types_array.length == 2
+      #add error handling here for if the things in types array are the same thing--one Pokémon has "Electric/Electric"
+      types_string = "#{types_array[0]} / #{types_array[1]}"
+    else
+      types_string = "#{types_array[0]}"
+    end
+
+    attribute_hash[:type] = types_string
+
+
+    attribute_hash
+
+  end
+
+  #This scrape only handles 800 and 801, then selectors change again.
+  # def self.scrape_pokemon_page_gen_vii_2(number)
+  #   #Converting the number into URL number:
+  #   url_number = self.number_conversion(number)
+
+  #   attribute_hash = {}
+
+  #   #Description scrape
+  #   url = open("https://www.serebii.net/pokedex-sm/#{url_number}.shtml")
+  #   index_page = Nokogiri::HTML(url)
+  #   description_string = index_page.css("table.dextable:nth-of-type(9) tr:nth-of-type(2) td.fooinfo").text
+  #   attribute_hash[:description] = description_string
+
+  #   #Type scrape
+  #   text_array = []
+  #   type_scrape = index_page.css("table.dextable:nth-of-type(2) td.cen a").each do |foo|
+  #     type = foo.attribute("href").text
+  #     text_array << type
+  #   end
+
+  #   #Type formatting:
+  #   type_urls_array = text_array.select {|text| text.include?("pokedex-sm")}
+  #   types_array = type_urls_array.collect {|type| type.slice(12..-7).capitalize!}
+  #   if types_array.length == 2
+  #     #add error handling here for if the things in types array are the same thing--one Pokémon has "Electric/Electric"
+  #     types_string = "#{types_array[0]} / #{types_array[1]}"
+  #   else
+  #     types_string = "#{types_array[0]}"
+  #   end
+
+  #   attribute_hash[:type] = types_string
+
+
+  #   attribute_hash
+
+  # end
 
 end
+
+
+    # #Checking for right Pokédex
+    # if number < 721
+
+    # elsif number > 720 && number < 799
+
+    # end

@@ -88,8 +88,13 @@ class StarterGenerator::CLI
 
   def more_info(pokemon)
     if pokemon.description == nil
-      attributes = StarterGenerator::Scraper.scrape_pokemon_page(pokemon.number)
-      pokemon.add_scraped_attributes(attributes)
+      if pokemon.number < 721
+        attributes = StarterGenerator::Scraper.scrape_pokemon_page(pokemon.number)
+        pokemon.add_scraped_attributes(attributes)
+      else
+        attributes = StarterGenerator::Scraper.scrape_pokemon_page_gen_vii(pokemon.number)
+        pokemon.add_scraped_attributes(attributes)
+      end
     end
   end
 
