@@ -22,8 +22,8 @@ class StarterGenerator::CLI
   end
 
   def generate_starters
-    pokemon_list = Scraper.scrape_list_page
-    Pokemon.make_three_pokemon(pokemon_list)
+    pokemon_list = StarterGenerator::Scraper.scrape_list_page
+    StarterGenerator::Pokemon.make_three_pokemon(pokemon_list)
   end
 
   def display_pokemon_options
@@ -31,7 +31,7 @@ class StarterGenerator::CLI
     puts "------------------------------".colorize(:color => :red, :background => :red) + "\n"
     puts "\n"
     puts "I have three Pokémon here looking for homes:"
-    Pokemon.all.each.with_index(1) do |pokemon, i|
+    StarterGenerator::Pokemon.all.each.with_index(1) do |pokemon, i|
       puts "  #{i}. " + "#{pokemon.name}".colorize(:light_blue)
     end
     puts "\n"
@@ -45,7 +45,7 @@ class StarterGenerator::CLI
     while input != "exit" && @adopt == false
       input = gets.strip.downcase
       if input.to_i > 0 && input.to_i < 4
-        the_pokemon = Pokemon.all[input.to_i-1]
+        the_pokemon = StarterGenerator::Pokemon.all[input.to_i-1]
         more_info(the_pokemon)
         print_pokemon_info(the_pokemon)
         adopt?(the_pokemon)
@@ -88,7 +88,7 @@ class StarterGenerator::CLI
 
   def more_info(pokemon)
     if pokemon.description == nil
-      attributes = Scraper.scrape_pokemon_page(pokemon.number)
+      attributes = StarterGenerator::Scraper.scrape_pokemon_page(pokemon.number)
       pokemon.add_scraped_attributes(attributes)
     end
   end
@@ -96,7 +96,7 @@ class StarterGenerator::CLI
   def print_pokemon_info(pokemon)
     puts "\n"
     puts "Name: ".colorize(:light_blue) + "#{pokemon.name}\n\n"
-    puts "Number: ".colorize(:light_blue) + "#{Scraper.number_conversion(pokemon.number)}\n\n"
+    puts "Number: ".colorize(:light_blue) + "#{StarterGenerator::Scraper.number_conversion(pokemon.number)}\n\n"
     puts "Type: ".colorize(:light_blue) + "#{pokemon.type}\n\n"
     puts "Description: ".colorize(:light_blue) + "#{pokemon.description}\n\n"
     puts "Nature: ".colorize(:light_blue) + "#{pokemon.nature}\n\n"

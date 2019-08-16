@@ -1,4 +1,4 @@
-class Pokemon
+class StarterGenerator::Pokemon
   attr_accessor :name, :number, :type, :description, :nature
   @@all = []
   def initialize(name, number, nature)
@@ -8,7 +8,7 @@ class Pokemon
   end
 
   def save
-    Pokemon.all << self
+    StarterGenerator::Pokemon.all << self
   end
 
   def self.all
@@ -16,18 +16,18 @@ class Pokemon
   end
 
   def self.create(name, number, nature)
-    pokemon = Pokemon.new(name, number, nature)
+    pokemon = StarterGenerator::Pokemon.new(name, number, nature)
     pokemon.save
     pokemon
   end
 
   def self.make_pokemon(pokemon_list)
     #randomly generated number
-    number = Generator.random_pokemon_number(pokemon_list)
+    number = StarterGenerator::Generator.random_pokemon_number(pokemon_list)
     #uses the Pokémon's number generated above to grab the corresponding name from the array of scraped Pokémon
     name = pokemon_list[number-1]
     #randomly generated nature
-    nature = self.natures[Generator.random_nature_number]
+    nature = self.natures[StarterGenerator::Generator.random_nature_number]
     self.create(name, number, nature)
   end
 

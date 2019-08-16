@@ -6,7 +6,7 @@
 #     Gen IV: 492
 #     Gen V: 648
 
-class Scraper
+class StarterGenerator::Scraper
 
   def self.scrape_list_page
     url = open("https://www.serebii.net/pokemon/all.shtml")
