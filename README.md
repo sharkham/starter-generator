@@ -1,8 +1,8 @@
 # StarterGenerator
 
-Welcome to the wonderful world of Pokémon! This gem generates three starter Pokémon for you to choose from to begin your Pokémon journey, up to and including Generation VI. 'Starter' Pokémon here could be any Pokémon from these generations, including evolved forms or legendaries; you're accessing them through the Pokémon World's version of the human society, the Pokémon Protection Society.
+Welcome to the wonderful world of Pokémon! This gem generates three starter Pokémon for you to choose from to begin your Pokémon journey, up to and including Generation VI, as well as some Pokémon in Generation VII. 'Starter' Pokémon here could be any Pokémon from these generations, including evolved forms or legendaries; you're accessing them through the Pokémon World's version of the human society, the Pokémon Protection Society.
 
-As well as generating three random Pokémon for you to choose from, this gem also gives you information on the Pokémon's type, Pokédex entry (from Omega Ruby) and randomly generates a nature.
+As well as generating three random Pokémon for you to choose from, this gem also gives you information on the Pokémon's type, Pokédex entry (from Omega Ruby or Sun) and randomly generates a nature.
 
 ## Installation
 
