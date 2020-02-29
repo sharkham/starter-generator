@@ -21,7 +21,7 @@ GEM
     pry-remote (0.1.8)
       pry (~> 0.9)
       slop (~> 3.0)
-    rake (10.5.0)
+    rake (13.0.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -47,7 +47,7 @@ DEPENDENCIES
   pry
   pry-nav
   pry-remote
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec (~> 3.0)
   starter_generator!
 
